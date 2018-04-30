@@ -3,10 +3,10 @@ server:
   applicationContextPath: /
   connector:
     type: http
-    port: 0
+    port: 8080
 logging:
   level: INFO
   appenders:
     - type: console
-      threshold: INFO
+      threshold: DEBUG
       logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
