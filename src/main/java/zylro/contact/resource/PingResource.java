@@ -6,11 +6,11 @@ import javax.ws.rs.core.Response;
 
 /**
  * For pinging and health checks
+ *
  * @author wot
  */
 @Path("/ping")
 public class PingResource {
-    
 
     @GET
     public Response ping() {

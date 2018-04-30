@@ -3,7 +3,7 @@ server:
     - type: http
       port: 8080
 logging:
-  level: INFO
+  level: DEBUG
   appenders:
     - type: console
       threshold: DEBUG

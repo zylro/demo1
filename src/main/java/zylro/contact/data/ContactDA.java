@@ -34,13 +34,14 @@ public class ContactDA {
 
     public ContactDA(String connectionString) {
         try {
-        MongoClientURI uri = new MongoClientURI(connectionString);
-        MongoClient mongoClient = new MongoClient(uri);
-        contactMdb = mongoClient.getDatabase("contact");
-        contactData = contactMdb.getCollection(COLLECTION_NAME);
+            MongoClientURI uri = new MongoClientURI(connectionString);
+            MongoClient mongoClient = new MongoClient(uri);
+            contactMdb = mongoClient.getDatabase("contact");
+            contactData = contactMdb.getCollection(COLLECTION_NAME);
         } catch (Exception ex) {
             throw new Error("Failed to connect to DB", ex);
         }
+        LOG.info("ContactDataAccess initialized");
     }
 
     public boolean ping() {
@@ -50,6 +51,7 @@ public class ContactDA {
             LOG.error("Failed to ping DB.", ex);
             return false;
         }
+        LOG.info("ping successful");
         return true;
     }
 
@@ -81,7 +83,7 @@ public class ContactDA {
                 && result.getMatchedCount() == 1L;
         boolean insertSuccessful = result.getUpsertedId() != null;
         if (!updateSuccessful && !insertSuccessful) {
-            LOG.error("Upsert failed");
+            LOG.error("Upsert failed: insert {}; update {}", insertSuccessful, updateSuccessful);
             throw new ServiceException(HttpStatus.INTERNAL_SERVER_ERROR_500, "Upsert failed");
         }
     }
