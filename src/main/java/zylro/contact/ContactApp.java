@@ -1,6 +1,7 @@
 package zylro.contact;
 
 import io.dropwizard.Application;
+import io.dropwizard.Configuration;
 import io.dropwizard.setup.Environment;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -12,7 +13,7 @@ import zylro.contact.resource.ContactResource;
  *
  * @author wot
  */
-public class ContactApp extends Application<ContactConfig> {
+public class ContactApp extends Application<Configuration> {
 
     private static final Logger LOG = LoggerFactory.getLogger(ContactApp.class);
 
@@ -21,8 +22,8 @@ public class ContactApp extends Application<ContactConfig> {
     }
 
     @Override
-    public void run(ContactConfig config, Environment env) throws Exception {
-        ContactDA contactDa = new ContactDA(config.getDbConnection());
+    public void run(Configuration config, Environment env) throws Exception {
+        ContactDA contactDa = new ContactDA(System.getenv("CONNECTION_STRING"));
         env.healthChecks().register("db", new DbHealthCheck(contactDa));
         env.jersey().register(new ContactResource(contactDa));
         LOG.info("ContactApp initialized.");

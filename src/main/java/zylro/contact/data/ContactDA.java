@@ -33,10 +33,14 @@ public class ContactDA {
     private static final UpdateOptions UPSERT = new UpdateOptions().upsert(true);
 
     public ContactDA(String connectionString) {
+        try {
         MongoClientURI uri = new MongoClientURI(connectionString);
         MongoClient mongoClient = new MongoClient(uri);
         contactMdb = mongoClient.getDatabase("contact");
         contactData = contactMdb.getCollection(COLLECTION_NAME);
+        } catch (Exception ex) {
+            throw new Error("Failed to connect to DB", ex);
+        }
     }
 
     public boolean ping() {
