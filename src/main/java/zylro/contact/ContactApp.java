@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import zylro.contact.data.ContactDA;
 import zylro.contact.resource.ContactResource;
+import zylro.contact.resource.PingResource;
 
 /**
  * Main application class to startup the service
@@ -26,6 +27,7 @@ public class ContactApp extends Application<Configuration> {
         ContactDA contactDa = new ContactDA(System.getenv("CONNECTION_STRING"));
         env.healthChecks().register("db", new DbHealthCheck(contactDa));
         env.jersey().register(new ContactResource(contactDa));
+        env.jersey().register(new PingResource());
         LOG.info("ContactApp initialized.");
     }
 
