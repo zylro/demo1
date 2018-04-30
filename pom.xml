@@ -46,8 +46,6 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>zylro.contact.ContactApp</mainClass>
                         </manifest>
                     </archive>
