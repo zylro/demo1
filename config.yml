@@ -3,7 +3,9 @@ server:
     - type: http
       port: 8080
 logging:
-  level: DEBUG
+  level: INFO
+  loggers:
+      zylro.contact: DEBUG
   appenders:
     - type: console
       threshold: DEBUG
