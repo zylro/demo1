@@ -10,6 +10,9 @@ to build fat jar run:
 ```
 mvn clean install
 ```
+## deployment
+
+[heroku](http://zylro-contact-app.herokuapp.com)
 
 ### organization
 
