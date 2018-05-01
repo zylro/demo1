@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import zylro.contact.Utils;
+import zylro.contact.auth.ApiKeyAuth;
 import zylro.contact.data.ContactDA;
 import zylro.contact.model.Contact;
 import zylro.contact.service.ContactValidations;
@@ -23,6 +24,7 @@ import zylro.contact.service.ContactValidations;
  *
  * @author wot
  */
+@ApiKeyAuth
 @Path("/contact")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
