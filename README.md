@@ -12,7 +12,16 @@ mvn clean install
 ```
 ## deployment
 
-[heroku](http://zylro-contact-app.herokuapp.com)
+[heroku endpoint](http://zylro-contact-app.herokuapp.com)
+
+example cURL
+```
+curl -X GET \
+  http://zylro-contact-app.herokuapp.com/contact \
+  -H 'Authorization: api_key bloop' \
+  -H 'Content-Type: application/json' 
+}'
+```
 
 ### organization
 
